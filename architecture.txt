@@ -1,0 +1,4 @@
+controller : all given ends points are added in controller.
+service : logic of project is in the service layer.
+repository : repository created with required methods.
+Exception : custom exception used. 
