@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.voting.exception.VoteException;
 import com.voting.service.Voteservice;
 
 @RestController
@@ -20,22 +18,33 @@ public class Votecontroller {
 	private Voteservice voteservice;
 
 	@PostMapping("/entercandidate")
-	public ResponseEntity<VoteException> enterCanditateName(@RequestParam("name") String candidatename) {
-		voteservice.enterCandidate(candidatename);
-		return ResponseEntity.ok(new VoteException("sucessfull"));
+	public ResponseEntity<String> enterCanditateName(@RequestParam("name") String candidatename) {
+		if (candidatename != null) {
+			voteservice.enterCandidate(candidatename);
+			return ResponseEntity.ok().body(candidatename);
+		} else {
+			return ResponseEntity.badRequest().body("not  found");
+		}
 	}
 
 	@PostMapping("/castvote")
-	public ResponseEntity<VoteException> castvote(@RequestParam("name") String candidatename) {
-		voteservice.castVote(candidatename);
-		return ResponseEntity.ok(new VoteException("sucessfull"));
+	public ResponseEntity<String> castvote(@RequestParam("name") String candidatename) {
+		if (candidatename != null) {
+			voteservice.castVotes(candidatename);
+			return ResponseEntity.ok().body(candidatename);
+		} else {
+			return ResponseEntity.badRequest().body("not  found");
+		}
 	}
 
 	@PostMapping("/countvote")
-	public ResponseEntity<VoteException> getCountVotes(@RequestParam("name") String candidatename) {
-		voteservice.getVotes(candidatename);
-		return ResponseEntity
-				.ok(new VoteException("vote of " + candidatename + " : " + voteservice.getVotes(candidatename)));
+	public ResponseEntity<String> getCountVotes(@RequestParam("name") String candidatename) {
+		if (candidatename != null) {
+			Integer votes=voteservice.getVotes(candidatename);
+			return ResponseEntity.ok().body(candidatename+" : "+votes);
+		} else {
+			return ResponseEntity.badRequest().body("not  found");
+		}
 	}
 
 	@GetMapping("/listvote")
@@ -44,8 +53,12 @@ public class Votecontroller {
 	}
 
 	@GetMapping("/getwinner")
-	public ResponseEntity<VoteException> getVotingWinner() {
-		return ResponseEntity.ok(new VoteException(voteservice.getWinner()));
+	public ResponseEntity<String> getVotingWinner() {
+		String winner= voteservice.getWinner();
+		if (winner != null) {
+			return ResponseEntity.ok().body(" "+winner);
+		} else {
+			return ResponseEntity.badRequest().body("not  found");
+		}
 	}
-
 }

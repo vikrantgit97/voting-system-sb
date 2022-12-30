@@ -4,12 +4,13 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class VoteRepository {
 
-	private final Map<String, Integer> candidate = new HashMap<>();
+	private  static  Map<String, Integer> candidate = new HashMap<>();
 
 	public boolean checkCandidate(String name) {
 		return candidate.containsKey(name);

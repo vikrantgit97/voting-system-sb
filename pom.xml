@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.voting</groupId>
-	<artifactId>VotingSyste_2</artifactId>
+	<artifactId>VotingSystem</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>VotingSyste_2</name>
+	<name>VotingSystem</name>
 	<description>voting system management project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
@@ -27,17 +27,17 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
-			<version>3.0.0</version>
-		</dependency>
+			<version>2.8.0</version>
+		</dependency> -->
 		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
-			<version>3.0.0</version>
-		</dependency>
+			<version>2.8.0</version>
+		</dependency>-->
 	</dependencies>
 
 	<build>
