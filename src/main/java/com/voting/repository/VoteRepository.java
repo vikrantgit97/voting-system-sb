@@ -21,11 +21,13 @@ public class VoteRepository {
 	}
 
 	public void castVote(String name) {
+		if(candidate.get(name).equals(name)) {
 		candidate.compute(name, (key, value) -> {
 			if (value == null)
 				return 0;
 			return value + 1;
 		});
+		}
 	}
 
 	public Integer countVotes(String name) {
