@@ -21,7 +21,7 @@ public class VoteRepository {
 	}
 
 	public void castVote(String name) {
-		if(candidate.get(name).equals(name)) {
+		if(!candidate.get(name).equals(name)) {
 		candidate.compute(name, (key, value) -> {
 			if (value == null)
 				return 0;
