@@ -9,4 +9,4 @@ http://localhost:8080/getwinner           --> get winner using this api
 
 no database used only swagger and web dependency used
  
- swagger is used for ui. 
+ swagger is used for ui - http://localhost:8080/swagger-ui.html 
