@@ -1,4 +1,5 @@
 Voting system
+
 base url to run aaplication http://localhost:8080
 swagger is implemented for testing http://localhost:8080/swagger-ui.html
 http://localhost:8080/candidatename?name=name -->create candidate using this api
